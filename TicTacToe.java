@@ -7,21 +7,24 @@ private static char turn;
     
     private static boolean didWin(char [][] twoD,char turn){
         boolean win = false;
-        //horizontal
+        
+		//horizontal
         if(twoD[1][1]==turn && twoD[1][2]==turn && twoD[1][3]==turn)
         	win=true;
         if(twoD[2][1]==turn && twoD[2][2]==turn && twoD[2][3]==turn)
         	win=true;
         if(twoD[3][1]==turn && twoD[3][2]==turn && twoD[3][3]==turn)
         	win=true;
-        //vertical
+        
+		//vertical
         if(twoD[1][1]==turn && twoD[2][1]==turn && twoD[3][1]==turn)
         	win=true;
         if(twoD[1][2]==turn && twoD[2][2]==turn && twoD[3][2]==turn)
         	win=true;
         if(twoD[1][3]==turn && twoD[2][3]==turn && twoD[3][3]==turn)
         	win=true;
-        //diagnoal
+        
+		//diagnoal
         if(twoD[1][1]==turn && twoD[2][2]==turn && twoD[3][3]==turn)
         	win=true;
         return win;
@@ -71,6 +74,7 @@ private static char turn;
 		   return true;
 	   return false;
    }
+   
    //checks to see if space is clear and marks it if it is
    public static boolean isSpace(char twoD[][], int num,char turn){
 	   switch(num){
@@ -120,7 +124,8 @@ private static char turn;
 	   }
 	   
    }
-   //
+   
+   
    public static int getInput(){
 	   Scanner getInput= new Scanner(System.in);
 	   int input=getInput.nextInt();
@@ -134,6 +139,8 @@ private static char turn;
 	   
 	   return 0;
    }
+   
+   
    public static void printCurrTable(char[][] twoD ){
 	   System.out.println("|"+twoD[1][1]  + "|" + twoD[1][2] + "|" + twoD[1][3]+ "|");  
        System.out.println("-------");
@@ -194,19 +201,10 @@ private static char turn;
         		 System.out.println("Sorry.Space taken");
         	 }
         }
-        		
-        			
-        		
         	}
-        
-        	
-        
-        
         }
         
-        
-        
-        
+		
         
         /*
         
