@@ -1,73 +1,83 @@
-package project2;
+/* Purpose Statement	: Program constructs a 2-Dimensional game of tic tac toe
+ * Author		: David Dalmatoff
+ * File	Name	: TicTacToe.java
+ * Date Started	: 
+ * Date Ended	: 
+ */
+
+
 import java.util.Scanner;
 
 public class TicTacToe {
 
 private static char turn;
     
+	//function that declares winning conditions
     private static boolean didWin(char [][] twoD,char turn){
-        boolean win = false;
+        boolean win = false;												//initializes win to false. Switches to true after a winner has been declared accordingly
         
-		//horizontal
-        if(twoD[1][1]==turn && twoD[1][2]==turn && twoD[1][3]==turn)
+		//horizontal win
+        if(twoD[1][1]==turn && twoD[1][2]==turn && twoD[1][3]==turn)		//if top row contains same values
         	win=true;
-        if(twoD[2][1]==turn && twoD[2][2]==turn && twoD[2][3]==turn)
+        if(twoD[2][1]==turn && twoD[2][2]==turn && twoD[2][3]==turn)		//if middle row contains same values
         	win=true;
-        if(twoD[3][1]==turn && twoD[3][2]==turn && twoD[3][3]==turn)
-        	win=true;
-        
-		//vertical
-        if(twoD[1][1]==turn && twoD[2][1]==turn && twoD[3][1]==turn)
-        	win=true;
-        if(twoD[1][2]==turn && twoD[2][2]==turn && twoD[3][2]==turn)
-        	win=true;
-        if(twoD[1][3]==turn && twoD[2][3]==turn && twoD[3][3]==turn)
+        if(twoD[3][1]==turn && twoD[3][2]==turn && twoD[3][3]==turn)		//if bottom row contains same values
         	win=true;
         
-		//diagnoal
-        if(twoD[1][1]==turn && twoD[2][2]==turn && twoD[3][3]==turn)
+		//vertical win
+        if(twoD[1][1]==turn && twoD[2][1]==turn && twoD[3][1]==turn)		//if first column contains same values
+        	win=true;
+        if(twoD[1][2]==turn && twoD[2][2]==turn && twoD[3][2]==turn)		//if second column contains same values
+        	win=true;
+        if(twoD[1][3]==turn && twoD[2][3]==turn && twoD[3][3]==turn)		//if third column contains same values
+        	win=true;
+        
+		//diagonal win
+        if(twoD[1][1]==turn && twoD[2][2]==turn && twoD[3][3]==turn)		//if diagonal top left to bottom right contains same values
+        	win=true;
+		if(twoD[3][1]==turn && twoD[2][2]==turn && twoD[1][3]==turn)		//if diagonal top right to bottom left contains same values
         	win=true;
         return win;
     }
     
     private static void welcomePeople(){
-    	 int [][] twoD2 = new int[5][5];
+    	 int [][] twoD2 = new int[5][5];		//creates two-dimensional array 5x5, 3 rows 3 columns and border between, totalling 5 rows and columns 
          int count=0;
-         twoD2[0][2]=1;
-         twoD2[0][3]=2;
-         twoD2[0][4]=3;
+         twoD2[0][2]=1;				//places a 1 in top left
+         twoD2[0][3]=2;				//places a 2 in top middle
+         twoD2[0][4]=3;				//places a 3 in top right
           
-         twoD2[1][2]=4;
-         twoD2[1][3]=5;
-         twoD2[1][4]=6;
+         twoD2[1][2]=4;				//places a 4 in middle row, left column
+         twoD2[1][3]=5;				//places a 5 in middle row, middle column (dead center of playing board)
+         twoD2[1][4]=6;				//places a 6 in middle row, right column
          
          
-         twoD2[2][2]=7;
-         twoD2[2][3]=8;
-         twoD2[2][4]=9;
+         twoD2[2][2]=7;				//places a 7 in bottom left
+         twoD2[2][3]=8;				//places an 8 in bottom middle
+         twoD2[2][4]=9;				//places a 9 in bottom right
          
-         //blank table
+         //prints a blank table with borders
           System.out.println("Welcome");
-          System.out.println("|"+twoD2[0][2]  + "|" + twoD2[0][3] + "|" + twoD2[0][4]+ "|");  
+          System.out.println("|"+twoD2[0][2]  + "|" + twoD2[0][3] + "|" + twoD2[0][4]+ "|");	//prints first row
           System.out.println("-------");
-          System.out.println("|"+twoD2[1][2]  + "|" + twoD2[1][3] + "|" + twoD2[1][4]+ "|");  
+          System.out.println("|"+twoD2[1][2]  + "|" + twoD2[1][3] + "|" + twoD2[1][4]+ "|");  	//second row
           System.out.println("-------");
-          System.out.println("|"+twoD2[2][2]  + "|" + twoD2[2][3] + "|" + twoD2[2][4]+ "|");  
+          System.out.println("|"+twoD2[2][2]  + "|" + twoD2[2][3] + "|" + twoD2[2][4]+ "|");  	//third row
     	
-          //choices of board
+          //prints the choices of board
+          System.out.println();												//two blank lines for aesthetics 
           System.out.println();
-          System.out.println();
-          System.out.println("|"+ " " + "|" + " " + "|" + " "+ "|");  
-          System.out.println("-------");
-          System.out.println("|"+"" + " " + "|" + " " + "|" + " "+ "|");  
-          System.out.println("-------");
-          System.out.println("|"+"" + " " + "|" + " " + "|" + " "+ "|"); 
+          System.out.println("|"+ " " + "|" + " " + "|" + " "+ "|");		//prints first row of vertical borders that separate columns
+          System.out.println("-------");									//row of horizontal lines to separate rows
+          System.out.println("|"+"" + " " + "|" + " " + "|" + " "+ "|");  	//second row of vertical border
+          System.out.println("-------");									//second row of horizontal lines
+          System.out.println("|"+"" + " " + "|" + " " + "|" + " "+ "|"); 	//third row of vertical border
     	
     }
     
     
   
-   //checks to see if users number choice is between 1 and 9
+   //function to determine if user input was valid (entered 1 through 9)
    public static boolean isRight(int num)
    {
 	   if(num>0 && num<=9)
@@ -75,49 +85,50 @@ private static char turn;
 	   return false;
    }
    
-   //checks to see if space is clear and marks it if it is
+   //function to determine if the desired space is open to be marked
    public static boolean isSpace(char twoD[][], int num,char turn){
-	   switch(num){
-	   case 1: if (twoD[0][1] == ' ') 
-	   			twoD[0][1] = turn;
-	   			System.out.println(twoD[0][1]);
+	   
+	   switch(num){						//if the space is open, return true (9 cases for each of the 9 spots on the board)
+	   case 1: if (twoD[0][1] == ' ')			//if space 1 is blank 
+	   			twoD[0][1] = turn;				//add the current turn's marker into the space
+	   			//System.out.println(twoD[0][1]);
 	   			return true;
 	   			
-       case 2: if (twoD[0][2] == ' ')
-    	   		twoD[0][2] = turn;
+       case 2: if (twoD[0][2] == ' ')			//if space 2 is blank 
+    	   		twoD[0][2] = turn;				//add the current turn's marker into the space
        			return true;
 				
-       case 3: if (twoD[0][3] == ' ')
-    	   		twoD[0][3] = turn;
+       case 3: if (twoD[0][3] == ' ')			//if space 3 is blank 
+    	   		twoD[0][3] = turn;				//add the current turn's marker into the space
        			return true;
        			
-	   case 4: if (twoD[1][1] == ' ')
-	   			twoD[1][1] = turn;
+	   case 4: if (twoD[1][1] == ' ')			//if space 4 is blank 
+	   			twoD[1][1] = turn;				//add the current turn's marker into the space
 	   			return true;
 	   			
-	   case 5:  if (twoD[1][2] == ' ')
-	   		twoD[1][2] = turn;
+	   case 5:  if (twoD[1][2] == ' ')			//if space 5 is blank 
+				twoD[1][2] = turn;				//add the current turn's marker into the space
 	   			return true;
 	   			
-	   case 6:  if (twoD[1][3] == ' ')
-	   			twoD[0][2] = turn;
+	   case 6:  if (twoD[1][3] == ' ')			//if space 6 is blank 
+	   			twoD[0][2] = turn;				//add the current turn's marker into the space
 	   			return true;
 	   		
-	   case 7:  if (twoD[2][1] == ' ')
-	   			twoD[2][1] = turn;
+	   case 7:  if (twoD[2][1] == ' ')			//if space 7 is blank 
+	   			twoD[2][1] = turn;				//add the current turn's marker into the space
 	   			return true;
 	   			
-	   case 8:  if (twoD[2][2] == ' ')
-	   			twoD[2][2] = turn;
+	   case 8:  if (twoD[2][2] == ' ')			//if space 8 is blank 
+	   			twoD[2][2] = turn;				//add the current turn's marker into the space
 	   			return true;
 	   			
-	   case 9:  if (twoD[2][3] == ' ')
-	   			twoD[2][3] = turn;
+	   case 9:  if (twoD[2][3] == ' ')			//if space 9 is blank 
+	   			twoD[2][3] = turn;				//add the current turn's marker into the space
 	   			return true;
 	   			
 	   default:
 		   
-		   return false;
+		   return false;				//if the space is not open, then returns false to isSpace
 	   		
 	   
 	   
@@ -125,18 +136,17 @@ private static char turn;
 	   
    }
    
-   
+   //function allows the user to input through keyboard
    public static int getInput(){
 	   Scanner getInput= new Scanner(System.in);
-	   int input=getInput.nextInt();
-	   if(isRight(input)==true){
-		   return input;
-		   
-	   }else{
-		   System.out.println("Sorry, number not valid");
-		   input=getInput();
-	   }
+	   int input = getInput.nextInt();
 	   
+	   if(isRight(input)==true)
+		   return input;
+	   else {
+		   System.out.println("Sorry, number is invalid.");		//prints error if the input is invalid
+		   input = getInput();
+	   }
 	   return 0;
    }
    
@@ -180,93 +190,29 @@ private static char turn;
         while(notWin){
         	if(num%2==0){
         		turn='O';
-        	}else{
+        	}
+			else{
         		turn='X';
         	}
         	printCurrTable(twoD);
         	System.out.println("It is " + turn + "'s turn.");
         	int input =getInput();
-        	if (isSpace(twoD,input,turn)==true){
-        			if(didWin(twoD,turn)==true){
-        				
-        				System.out.println(turn+"'s"+" won!");
-        				break;
-        			}else{
+        	
+			if (isSpace(twoD,input,turn)==true){
+        		if(didWin(twoD,turn)==true){
+					System.out.println(turn+"'s"+" won!");
+        			break;
+        			}
+					else{
         				num++;
         			}
-        		}
-        		
-        		
-        	 else{
+        	}
+        	else{
         		 System.out.println("Sorry.Space taken");
-        	 }
-        }
         	}
         }
-        
-		
-        
-        /*
-        
-        showBoardCurrentState();
-        showNumpad();
-        
-        //create turn, test if it is X/O's turn
-        turn = 'X';
-        System.out.println("It is " + turn + "'s turn.");
-        boolean notWin = true;
-        while(notWin){
-        int input = getInput();
-        
-        //one method:
-        convert from 1-9 to 2D array
-            if not 1-9, repeat this step of getting input
-            
-        //one method:    
-        at that spot, is it empty?
-            if not, try again.
-
-            notWin = win();
-            //yes: done
-            //no: repeat && change turn.
-            changeTurn();
-                    
-                    if (turn == 'X')
-                        turn = 'O';
-                    else
-                        turn = 'X';
-        }
-        /*
-        int input = 3;
-
-        char [][] myTic = { {' ',' ',' '}, {' ',' ',' '}, {' ',' ',' '} };
-        char turn = 'X';
-
-        boolean worked = true;
-
-        do{
-            worked = true;
-            if (input == 1 && myTic[0][0] == ' ') myTic[0][0] = turn;
-            else if(input == 2 && myTic[0][1] == ' ') myTic[0][1] = turn;
-            else if(input == 3 && myTic[0][2] == ' ') myTic[0][2] = turn;
-            else{
-                System.out.println("Sorry! The only values accepted are the digits of 1 through 9.");
-                worked = false;
-            }
-        }
-        while(worked == true);
-
-        switch(input){
-        case 1: if (myTic[0][0] == ' ') myTic[0][0] = turn;
-        case 2: if (myTic[0][1] == ' ') myTic[0][1] = turn;
-        case 3: if (myTic[0][2] == ' ') myTic[0][2] = turn;
-        //as many cases as you want.
-        default: System.out.println("Sorry! The only values accepted are the digits of 1 through 9.");
-        }
-
-        //output should be 0,2
-        */
-    
+    }
+}
    
 	
 
