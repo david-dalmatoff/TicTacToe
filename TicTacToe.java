@@ -127,13 +127,9 @@ private static char turn;
 	   			return true;
 	   			
 	   default:
-		   
 		   return false;				//if the space is not open, then returns false to isSpace
-	   		
-	   
 	   
 	   }
-	   
    }
    
    //function allows the user to input through keyboard
@@ -152,21 +148,21 @@ private static char turn;
    
    
    public static void printCurrTable(char[][] twoD ){
-	   System.out.println("|"+twoD[1][1]  + "|" + twoD[1][2] + "|" + twoD[1][3]+ "|");  
+	   System.out.println("|"+twoD[1][1]  + "|" + twoD[1][2] + "|" + twoD[1][3]+ "|");		//prints first row
        System.out.println("-------");
-       System.out.println("|"+twoD[2][1]  + "|" + twoD[2][2] + "|" + twoD[2][3]+ "|");  
+       System.out.println("|"+twoD[2][1]  + "|" + twoD[2][2] + "|" + twoD[2][3]+ "|");  	//second row
        System.out.println("-------");
-       System.out.println("|"+twoD[3][1]  + "|" + twoD[3][2] + "|" + twoD[3][3]+ "|");  
+       System.out.println("|"+twoD[3][1]  + "|" + twoD[3][2] + "|" + twoD[3][3]+ "|");  	//third row
        
  	
        //choices of board
+       System.out.println();												//two blank lines for aesthetics 
        System.out.println();
-       System.out.println();
-       System.out.println("|"+ " " + "|" + " " + "|" + " "+ "|");  
-       System.out.println("-------");
-       System.out.println("|"+"" + " " + "|" + " " + "|" + " "+ "|");  
-       System.out.println("-------");
-       System.out.println("|"+"" + " " + "|" + " " + "|" + " "+ "|");
+       System.out.println("|"+ " " + "|" + " " + "|" + " "+ "|");			//prints first row of vertical borders that separate columns
+       System.out.println("-------");										//row of horizontal lines to separate rows
+       System.out.println("|"+"" + " " + "|" + " " + "|" + " "+ "|");   	//second row of vertical border 
+       System.out.println("-------");										//second row of horizontal lines
+       System.out.println("|"+"" + " " + "|" + " " + "|" + " "+ "|"); 		//third row of vertical border
        
        for(int i=0;i<twoD.length;i++){
     	   for(int j=0;j<twoD[i].length;j++){
