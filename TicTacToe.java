@@ -174,37 +174,36 @@ private static char turn;
    
     public static void main(String[] args) {
         
-    	welcomePeople();
+    	welcomePeople();					//calls method to welcome people / print board to show choices
     	char [][] twoD = new char[5][5];
     	
     	char turn = 'X';
     	int num=1;
-      
         
-        boolean notWin = true;
+        boolean notWin = true;				//boolean for while loop to cycle until winner is declared
        
-        while(notWin){
+        while(notWin){						//loops continuously as long as there isn't a winner (notWin = true)
         	if(num%2==0){
-        		turn='O';
+        		turn='O';					//if the turn count is even, then 'O' makes the move
         	}
 			else{
-        		turn='X';
+        		turn='X';					//if the turn count is odd, then 'X' makes a move
         	}
-        	printCurrTable(twoD);
-        	System.out.println("It is " + turn + "'s turn.");
-        	int input =getInput();
+        	printCurrTable(twoD);			//prints the current table array
+        	System.out.println("It is " + turn + "'s turn.");		//lets the user know whose turn it is to move
+        	int input = getInput();			
         	
-			if (isSpace(twoD,input,turn)==true){
-        		if(didWin(twoD,turn)==true){
-					System.out.println(turn+"'s"+" won!");
+			if (isSpace(twoD,input,turn)==true){		//if the desired input (from the user) holds a blank available space
+        		if(didWin(twoD,turn)==true){			//if there has been a winner
+					System.out.println(turn+"'s"+" won!");	//prints the winner
         			break;
-        			}
-					else{
-        				num++;
-        			}
+        		}
+				else{
+        				num++;							//else increases the turn count
+        		}
         	}
         	else{
-        		 System.out.println("Sorry.Space taken");
+        		 System.out.println("Sorry.Space taken");	//else, if the desired spot is not blank, system prints so
         	}
         }
     }
